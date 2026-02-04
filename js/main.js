@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initBackToTop();
     initCursorEffect();
     initFormHandling();
+    initTestimonialsSlider();
+    initAudioPlayers();
 });
 
 /* ============================================
@@ -158,11 +160,9 @@ function initTypingEffect() {
     if (!typedText) return;
 
     const texts = [
-        'مصمم جرافيك محترف',
-        'مطور مواقع ويب',
-        'خبير موشن جرافيك',
-        'منتج فيديو إعلاني',
-        'مصور فوتوغرافي'
+        'مصمم جرافيك أول',
+        'مدرب خبيــــــر',
+        'مونتير إبداعــي',
     ];
 
     let textIndex = 0;
@@ -503,3 +503,170 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+/* ============================================
+   TESTIMONIALS SLIDER
+   ============================================ */
+function initTestimonialsSlider() {
+    const cards = document.querySelectorAll('.testimonial-card');
+    const dots = document.querySelectorAll('.slider-dots .dot');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+
+    if (!cards.length) return;
+
+    let currentSlide = 0;
+    const totalSlides = cards.length;
+
+    function showSlide(index) {
+        // Stop all audio when changing slides
+        cards.forEach(card => {
+            const audio = card.querySelector('audio');
+            if (audio) {
+                audio.pause();
+                audio.currentTime = 0;
+            }
+            const playBtn = card.querySelector('.play-btn');
+            if (playBtn) {
+                playBtn.classList.remove('playing');
+                playBtn.querySelector('i').className = 'fas fa-play';
+            }
+        });
+
+        // Update slides
+        cards.forEach((card, i) => {
+            card.classList.remove('active');
+            if (i === index) {
+                card.classList.add('active');
+            }
+        });
+
+        // Update dots
+        dots.forEach((dot, i) => {
+            dot.classList.remove('active');
+            if (i === index) {
+                dot.classList.add('active');
+            }
+        });
+
+        currentSlide = index;
+    }
+
+    function nextSlide() {
+        const next = (currentSlide + 1) % totalSlides;
+        showSlide(next);
+    }
+
+    function prevSlide() {
+        const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(prev);
+    }
+
+    // Event Listeners
+    if (nextBtn) {
+        nextBtn.addEventListener('click', nextSlide);
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', prevSlide);
+    }
+
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            nextSlide();
+        } else if (e.key === 'ArrowRight') {
+            prevSlide();
+        }
+    });
+}
+
+/* ============================================
+   AUDIO PLAYERS
+   ============================================ */
+function initAudioPlayers() {
+    const playButtons = document.querySelectorAll('.play-btn');
+
+    if (!playButtons.length) return;
+
+    let currentlyPlaying = null;
+
+    playButtons.forEach(btn => {
+        const audioId = btn.getAttribute('data-audio');
+        const audio = document.getElementById(audioId);
+        const progressBar = document.getElementById('progress-' + audioId.split('-')[1]);
+        const timeDisplay = document.getElementById('time-' + audioId.split('-')[1]);
+
+        if (!audio) return;
+
+        // Play/Pause toggle
+        btn.addEventListener('click', () => {
+            // Stop other playing audio
+            if (currentlyPlaying && currentlyPlaying !== audio) {
+                currentlyPlaying.pause();
+                currentlyPlaying.currentTime = 0;
+                const otherBtn = document.querySelector(`[data-audio="${currentlyPlaying.id}"]`);
+                if (otherBtn) {
+                    otherBtn.classList.remove('playing');
+                    otherBtn.querySelector('i').className = 'fas fa-play';
+                }
+            }
+
+            if (audio.paused) {
+                audio.play();
+                btn.classList.add('playing');
+                btn.querySelector('i').className = 'fas fa-pause';
+                currentlyPlaying = audio;
+            } else {
+                audio.pause();
+                btn.classList.remove('playing');
+                btn.querySelector('i').className = 'fas fa-play';
+                currentlyPlaying = null;
+            }
+        });
+
+        // Update progress bar
+        audio.addEventListener('timeupdate', () => {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            if (progressBar) {
+                progressBar.style.width = progress + '%';
+            }
+
+            // Update time display
+            if (timeDisplay) {
+                const minutes = Math.floor(audio.currentTime / 60);
+                const seconds = Math.floor(audio.currentTime % 60);
+                timeDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            }
+        });
+
+        // Reset on end
+        audio.addEventListener('ended', () => {
+            btn.classList.remove('playing');
+            btn.querySelector('i').className = 'fas fa-play';
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+            if (timeDisplay) {
+                timeDisplay.textContent = '0:00';
+            }
+            currentlyPlaying = null;
+        });
+
+        // Click on progress bar to seek
+        const progressContainer = progressBar?.parentElement;
+        if (progressContainer) {
+            progressContainer.addEventListener('click', (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                const pos = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = pos * audio.duration;
+            });
+        }
+    });
+}

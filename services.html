@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="خدمات فريقي الإبداعي - تصميم جرافيك، مونتاج، موشن جرافيك والمزيد">
+    <meta name="keywords" content="خدمات, تصميم, مونتاج, موشن جرافيك, تطوير مواقع">
+    <title>خدمات فريقي الإبداعي | Portfolio</title>
+
+    <!-- Google Fonts - Rubik -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <span class="loader-text">جاري التحميل...</span>
+        </div>
+    </div>
+
+    <!-- Cursor Effect -->
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-follower" id="cursor-follower"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">Portfolio</span>
+                <span class="logo-dot"></span>
+            </a>
+
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html" class="nav-link">الرئيسية</a></li>
+                <li><a href="index.html#about" class="nav-link">من أنا</a></li>
+                <li><a href="#services" class="nav-link active">خدماتي</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">أعمالي</a></li>
+                <li><a href="index.html#contact" class="nav-link">تواصل معي</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="theme-toggle" aria-label="تبديل الوضع">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                </button>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="القائمة">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <a href="index.html" class="back-link">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>العودة للرئيسية</span>
+                </a>
+                <h1 class="page-title">خدمات فريقي الإبداعي</h1>
+                <p class="page-description">نقدم مجموعة متكاملة من الخدمات الإبداعية والتقنية لتحويل أفكارك إلى واقع
+                    ملموس</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <div class="services-grid">
+                <!-- التصميم الجرافيكي -->
+                <div class="service-card-flip" data-aos="fade-up">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="service-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h3 class="service-title">التصميم الجرافيكي</h3>
+                            <p class="service-description">
+                                تصميم هويات بصرية، شعارات، بروشورات، ومواد تسويقية احترافية.
+                            </p>
+                            <span class="flip-hint">
+                                <i class="fas fa-eye"></i> عرض عمل مميز
+                            </span>
+                        </div>
+                        <div class="flip-back">
+                            <div class="featured-work-image gradient-1">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <h4 class="featured-work-title">تصميم هوية بصرية</h4>
+                            <p class="featured-work-desc">هوية متكاملة لشركة تقنية</p>
+                            <a href="index.html#portfolio" class="featured-work-link">
+                                <span>عرض التفاصيل</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- المونتاج الإعلاني -->
+                <div class="service-card-flip" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="service-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h3 class="service-title">المونتاج الإعلاني</h3>
+                            <p class="service-description">
+                                إنتاج فيديوهات إعلانية احترافية وتأثيرات بصرية مميزة.
+                            </p>
+                            <span class="flip-hint">
+                                <i class="fas fa-eye"></i> عرض عمل مميز
+                            </span>
+                        </div>
+                        <div class="flip-back">
+                            <div class="featured-work-image gradient-2">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <h4 class="featured-work-title">إعلان تجاري</h4>
+                            <p class="featured-work-desc">فيديو ترويجي لمنتج تقني</p>
+                            <a href="index.html#portfolio" class="featured-work-link">
+                                <span>عرض التفاصيل</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- الموشن جرافيك -->
+                <div class="service-card-flip" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="service-icon">
+                                <i class="fas fa-film"></i>
+                            </div>
+                            <h3 class="service-title">الموشن جرافيك</h3>
+                            <p class="service-description">
+                                إنشاء رسوم متحركة جذابة وفيديوهات توضيحية مبتكرة.
+                            </p>
+                            <span class="flip-hint">
+                                <i class="fas fa-eye"></i> عرض عمل مميز
+                            </span>
+                        </div>
+                        <div class="flip-back">
+                            <div class="featured-work-image gradient-3">
+                                <i class="fas fa-film"></i>
+                            </div>
+                            <h4 class="featured-work-title">فيديو توضيحي</h4>
+                            <p class="featured-work-desc">رسوم متحركة لتطبيق جوال</p>
+                            <a href="index.html#portfolio" class="featured-work-link">
+                                <span>عرض التفاصيل</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- التصوير الفوتوغرافي -->
+                <div class="service-card-flip" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="service-icon">
+                                <i class="fas fa-camera"></i>
+                            </div>
+                            <h3 class="service-title">التصوير الفوتوغرافي</h3>
+                            <p class="service-description">
+                                التقاط صور احترافية للمنتجات والفعاليات بجودة عالية.
+                            </p>
+                            <span class="flip-hint">
+                                <i class="fas fa-eye"></i> عرض عمل مميز
+                            </span>
+                        </div>
+                        <div class="flip-back">
+                            <div class="featured-work-image gradient-5">
+                                <i class="fas fa-camera-retro"></i>
+                            </div>
+                            <h4 class="featured-work-title">تصوير منتجات</h4>
+                            <p class="featured-work-desc">جلسة تصوير لمنتجات تجارية</p>
+                            <a href="index.html#portfolio" class="featured-work-link">
+                                <span>عرض التفاصيل</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تطوير المواقع -->
+                <div class="service-card-flip" data-aos="fade-up" data-aos-delay="400">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="service-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3 class="service-title">تطوير المواقع</h3>
+                            <p class="service-description">
+                                تصميم وتطوير مواقع ويب حديثة ومتجاوبة مع تجربة مستخدم سلسة.
+                            </p>
+                            <span class="flip-hint">
+                                <i class="fas fa-eye"></i> عرض عمل مميز
+                            </span>
+                        </div>
+                        <div class="flip-back">
+                            <div class="featured-work-image gradient-4">
+                                <i class="fas fa-globe"></i>
+                            </div>
+                            <h4 class="featured-work-title">موقع شركة</h4>
+                            <p class="featured-work-desc">موقع عصري لشركة استشارات</p>
+                            <a href="index.html#portfolio" class="featured-work-link">
+                                <span>عرض التفاصيل</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- تطوير التطبيقات -->
+                <div class="service-card-flip" data-aos="fade-up" data-aos-delay="500">
+                    <div class="flip-inner">
+                        <div class="flip-front">
+                            <div class="service-icon">
+                                <i class="fas fa-mobile-screen"></i>
+                            </div>
+                            <h3 class="service-title">تطوير التطبيقات</h3>
+                            <p class="service-description">
+                                بناء تطبيقات جوال متميزة لـ Android و iOS بتصميم عصري.
+                            </p>
+                            <span class="flip-hint">
+                                <i class="fas fa-eye"></i> عرض عمل مميز
+                            </span>
+                        </div>
+                        <div class="flip-back">
+                            <div class="featured-work-image gradient-6">
+                                <i class="fas fa-mobile-alt"></i>
+                            </div>
+                            <h4 class="featured-work-title">تطبيق توصيل</h4>
+                            <p class="featured-work-desc">تطبيق جوال لخدمات التوصيل</p>
+                            <a href="index.html#portfolio" class="featured-work-link">
+                                <span>عرض التفاصيل</span>
+                                <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="services-cta">
+                <h3>هل تريد خدمة مخصصة؟</h3>
+                <p>تواصل معنا لمناقشة مشروعك والحصول على عرض سعر مخصص</p>
+                <a href="index.html#contact" class="btn btn-primary btn-lg">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>تواصل معنا الآن</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-text">Portfolio</span>
+                        <span class="logo-dot"></span>
+                    </a>
+                    <p>أحول أفكارك إلى واقع إبداعي</p>
+                </div>
+
+                <div class="footer-links">
+                    <h4>روابط سريعة</h4>
+                    <ul>
+                        <li><a href="index.html">الرئيسية</a></li>
+                        <li><a href="index.html#about">من أنا</a></li>
+                        <li><a href="services.html">خدماتي</a></li>
+                        <li><a href="index.html#portfolio">أعمالي</a></li>
+                        <li><a href="index.html#contact">تواصل معي</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-social">
+                    <h4>تابعني</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 جميع الحقوق محفوظة. </p>
+                <p>صُنع بـ <i class="fas fa-heart"></i> بواسطة عاصم خبش</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" aria-label="العودة للأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Main JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
