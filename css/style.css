@@ -1574,20 +1574,73 @@ textarea {
     color: var(--text-light);
 }
 
-/* Mobile Responsive */
+/* Mobile Responsive - Flip Cards */
 @media (max-width: 768px) {
     .service-card-flip {
-        height: 280px;
+        height: auto;
+        min-height: 320px;
+        perspective: 1000px;
+    }
+
+    .flip-inner {
+        transform-style: preserve-3d;
     }
 
     .flip-front,
     .flip-back {
         padding: var(--spacing-lg);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+
+    .flip-front {
+        position: relative;
+        z-index: 2;
+    }
+
+    .flip-back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        transform: rotateY(180deg);
+    }
+
+    .service-card-flip.flipped .flip-front {
+        z-index: 1;
+    }
+
+    .service-card-flip.flipped .flip-back {
+        z-index: 2;
     }
 
     .featured-work-image {
         aspect-ratio: 16/9;
         font-size: 2rem;
+    }
+
+    .service-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .service-title {
+        font-size: 1.1rem;
+    }
+
+    .service-description {
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin-bottom: var(--spacing-md);
+    }
+
+    .flip-hint {
+        font-size: 0.8rem;
+        padding: var(--spacing-xs) var(--spacing-md);
     }
 }
 
