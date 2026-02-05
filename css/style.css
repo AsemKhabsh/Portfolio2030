@@ -1539,6 +1539,8 @@ textarea {
     flex-shrink: 0;
     width: 120px;
     height: 120px;
+    min-width: 120px;
+    min-height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1569,6 +1571,21 @@ textarea {
 .client-logo:hover img {
     filter: grayscale(0);
     opacity: 1;
+}
+
+/* Responsive - smaller logos on mobile */
+@media (max-width: 768px) {
+    .client-logo {
+        width: 80px;
+        height: 80px;
+        min-width: 80px;
+        min-height: 80px;
+        padding: var(--spacing-md);
+    }
+
+    .clients-marquee-track {
+        gap: 1rem;
+    }
 }
 
 /* Light mode adjustments */
