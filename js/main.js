@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initFormHandling();
     initTestimonialsSlider();
     initAudioPlayers();
+    initClientsLightbox();
 });
 
 /* ============================================
@@ -668,5 +669,70 @@ function initAudioPlayers() {
                 audio.currentTime = pos * audio.duration;
             });
         }
+    });
+}
+
+/* ============================================
+   CLIENTS LOGOS LIGHTBOX
+   ============================================ */
+function initClientsLightbox() {
+    const clientLogos = document.querySelectorAll('.client-logo');
+    const lightbox = document.getElementById('logoLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const lightboxClose = lightbox?.querySelector('.lightbox-close');
+    const lightboxOverlay = lightbox?.querySelector('.lightbox-overlay');
+
+    if (!clientLogos.length || !lightbox) return;
+
+    // Open lightbox on logo click
+    clientLogos.forEach(logo => {
+        logo.addEventListener('click', () => {
+            const img = logo.querySelector('img');
+            if (img) {
+                lightboxImage.src = img.src;
+                lightboxImage.alt = img.alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    // Close lightbox function
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+            lightboxImage.src = '';
+        }, 300);
+    }
+
+    // Close on button click
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    // Close on overlay click
+    if (lightboxOverlay) {
+        lightboxOverlay.addEventListener('click', closeLightbox);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+            closeLightbox();
+        }
+    });
+}
+
+/* ============================================
+   CLIENTS MARQUEE - DUPLICATE FOR SEAMLESS LOOP
+   ============================================ */
+function initClientsMarquee() {
+    const tracks = document.querySelectorAll('.clients-marquee-track');
+
+    tracks.forEach(track => {
+        // Clone the entire track content once for seamless loop
+        const content = track.innerHTML;
+        track.innerHTML = content + content;
     });
 }
