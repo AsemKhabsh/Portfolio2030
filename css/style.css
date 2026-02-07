@@ -2925,6 +2925,302 @@ textarea {
 }
 
 /* ============================================
+   TEAM SERVICES CARDS
+   ============================================ */
+.team-services-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2xl);
+}
+
+.team-service-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    transition: all var(--transition-normal);
+}
+
+.team-service-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 20px 60px rgba(232, 92, 46, 0.15);
+    transform: translateY(-5px);
+}
+
+.team-service-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xl);
+    background: var(--gradient-primary);
+    color: var(--text-light);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.team-service-title i {
+    font-size: 1.75rem;
+}
+
+.team-service-content {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+}
+
+.team-video-wrapper {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    aspect-ratio: 9/16;
+    background: var(--surface-hover);
+    cursor: pointer;
+}
+
+.team-video-wrapper video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.team-video-wrapper.no-video {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+}
+
+.video-placeholder i {
+    font-size: 4rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.video-play-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    transition: opacity var(--transition-normal);
+}
+
+.video-play-overlay i {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    transition: transform var(--transition-normal);
+}
+
+.team-video-wrapper:hover .video-play-overlay i {
+    transform: scale(1.1);
+}
+
+.team-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.team-leader {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+}
+
+.team-leader>i {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    color: var(--text-light);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.team-leader>div {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.team-leader .label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.team-leader .name {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.team-experience {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--surface-hover);
+    border-radius: var(--radius-md);
+}
+
+.team-experience>i {
+    color: var(--primary);
+    font-size: 1.1rem;
+    margin-top: 3px;
+}
+
+.team-experience>span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.team-skills {
+    flex: 1;
+}
+
+.team-skills h4 {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--spacing-md);
+}
+
+.team-skills h4 i {
+    color: var(--primary);
+}
+
+.team-skills ul {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.team-skills ul li {
+    position: relative;
+    padding-right: var(--spacing-lg);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.team-skills ul li::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+}
+
+/* Responsive - Team Service Cards */
+@media (max-width: 991px) {
+    .team-service-content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .team-video-wrapper {
+        aspect-ratio: 16/9;
+        max-height: 300px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .team-details {
+        max-width: 600px;
+        width: 100%;
+    }
+
+    .team-leader {
+        justify-content: center;
+    }
+
+    .team-experience {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .team-skills {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-skills ul {
+        align-items: center;
+    }
+
+    .team-skills ul li {
+        text-align: right;
+    }
+}
+
+@media (max-width: 768px) {
+    .team-service-title {
+        font-size: 1.25rem;
+        padding: var(--spacing-lg);
+    }
+
+    .team-service-title i {
+        font-size: 1.5rem;
+    }
+
+    .team-service-content {
+        padding: var(--spacing-lg);
+        gap: var(--spacing-lg);
+    }
+
+    .team-leader {
+        padding: var(--spacing-md);
+    }
+
+    .team-leader>i {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .team-leader .name {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
    RESPONSIVE ADJUSTMENTS
    ============================================ */
 @media (max-width: 576px) {
